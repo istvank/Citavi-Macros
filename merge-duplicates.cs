@@ -312,7 +312,13 @@ public static class CitaviMacro
 				references[0].Keywords.AddRange(references[1].Keywords);
 				
 				// ReferenceOrganization
-				references[0].Organizations.AddRange(references[1].Organizations);
+				foreach (Person organization in references[1].Organizations)
+				{
+					if (!references[0].Organizations.Contains(organization))
+					{
+						references[0].Organizations.Add(organization);
+					}
+				}
 				
 				// ReferenceOthersInvolved
 				foreach (Person otherinvolved in references[1].OthersInvolved)
