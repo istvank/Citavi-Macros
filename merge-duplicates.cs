@@ -291,10 +291,22 @@ public static class CitaviMacro
 				references[0].Categories.AddRange(references[1].Categories);
 				
 				// ReferenceCollaborator
-				references[0].Collaborators.AddRange(references[1].Collaborators);
+				foreach (Person collaborator in references[1].Collaborators)
+				{
+					if (!references[0].Collaborators.Contains(collaborator))
+					{
+						references[0].Collaborators.Add(collaborator);
+					}
+				}
 				
 				// ReferenceEditor
-				references[0].Editors.AddRange(references[1].Editors);
+				foreach (Person editor in references[1].Editors)
+				{
+					if (!references[0].Editors.Contains(editor))
+					{
+						references[0].Editors.Add(editor);
+					}
+				}
 				
 				// ReferenceKeyword
 				references[0].Keywords.AddRange(references[1].Keywords);
@@ -303,7 +315,13 @@ public static class CitaviMacro
 				references[0].Organizations.AddRange(references[1].Organizations);
 				
 				// ReferenceOthersInvolved
-				references[0].OthersInvolved.AddRange(references[1].OthersInvolved);
+				foreach (Person otherinvolved in references[1].OthersInvolved)
+				{
+					if (!references[0].OthersInvolved.Contains(otherinvolved))
+					{
+						references[0].OthersInvolved.Add(otherinvolved);
+					}
+				}
 				
 				// ReferencePublisher
 				references[0].Publishers.AddRange(references[1].Publishers);
