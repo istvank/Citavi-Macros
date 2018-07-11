@@ -382,17 +382,6 @@ public static class CitaviMacro
 		{
 			MessageBox.Show("Currently this script only supports merging two references. Please select two and try again.");
 		}
-	
-		
-
-		foreach (Reference reference in references)
-		{
-			ReferenceType referenceType = reference.ReferenceType;
-			
-			//if you need to operate on references of a certain reference type only:
-			//if (reference.ReferenceType == ReferenceType.Book) ...
-			
-		}
 		
 	}
 	
@@ -418,30 +407,5 @@ public static class CitaviMacro
 		{
 			return first + " // " + second;
 		}
-	}
-	
-	private static void MergeReferencePersonCollections(ReferencePersonCollection first, ReferencePersonCollection second)
-	{
-		List<Person> personsList = new List<Person>();
-		personsList.AddRange(first);
-		Person[] personsArray = second.ToArray();
-		foreach (Person person in personsArray)
-		{
-			personsList.AddIfNotExists(person);
-		}
-		first.ReplaceBy(personsList);
-	}
-	
-	private static DateTime GetOlderDateTime(DateTime first, DateTime second)
-	{
-		if (DateTime.Compare(first, second) < 0)
-		{
-			return first;
-		}
-		else
-		{
-			return second;
-		}
-	}
-	
+	}	
 }
