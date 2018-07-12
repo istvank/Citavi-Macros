@@ -269,7 +269,13 @@ public static class CitaviMacro
 				// FOREIGN KEY fields
 				
 				// Locations
-				references[0].Locations.AddRange(references[1].Locations);
+				foreach(Location location in references[1].Locations)
+				{
+					if (!references[0].Locations.Contains(location))
+					{
+						references[0].Locations.Add(location);
+					}
+				}
 				
 				// Groups
 				references[0].Groups.AddRange(references[1].Groups);
@@ -309,7 +315,13 @@ public static class CitaviMacro
 				}
 				
 				// ReferenceKeyword
-				references[0].Keywords.AddRange(references[1].Keywords);
+				foreach (Keyword keyword in references[1].Keywords)
+				{
+					if (!references[0].Keywords.Contains(keyword))
+					{
+						references[0].Keywords.Add(keyword);
+					}
+				}
 				
 				// ReferenceOrganization
 				foreach (Person organization in references[1].Organizations)
@@ -330,7 +342,13 @@ public static class CitaviMacro
 				}
 				
 				// ReferencePublisher
-				references[0].Publishers.AddRange(references[1].Publishers);
+				foreach (Publisher publisher in references[1].Publishers)
+				{
+					if (!references[0].Publishers.Contains(publisher))
+					{
+						references[0].Publishers.Add(publisher);
+					}
+				}
 				
 				// ReferenceReference
 				// adding ChildReferences does not work
